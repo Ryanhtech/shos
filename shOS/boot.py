@@ -53,13 +53,27 @@ class ShosBootFile:
               it.
             - If the user is running in a virtual environment, ask the user to check if it is the right virtual
               environment and, if it is the case, to uninstall/reinstall the shos package.
-        :return:
         """
+
+        is_venv = ShosBootFile.is_running_in_venv()
+
+        if is_venv:
+            # We are running in a venv. (see doc for more info)
+            print("An error occurred. The shOS library cannot be found or is corrupted. This is what you can do :\n"
+                  "  - If you have already installed the shOS library in this virtual environment, uninstall it and\n"
+                  "    then reinstall it.\n"
+                  "  - If you have not installed the shOS library yet, install it in this virtual environment.")
+
+            return
+
+        # We are not in a venv
+        print("Please run this in a virtual environment with the shOS library installed.")
+        return
 
 
 try:
     # Try to import shOS bootloader
-    from shos.ke import KeBootloader
+    from shos.ke.shos_bootloader import KeBootloader
 except ImportError:
     # Print the installation prompt message. If the user has not installed the shOS package, it will need to follow
     # these instructions. Read doc for more info

@@ -13,17 +13,15 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+from setuptools import setup
 
-class KeBootloader:
-    """shOS KeBootloader (Kernel Bootloader)
-
-    This class provides the shOS bootloader methods. It boots up the system by initializing the shos, and by checking
-    if everything is OK to start it.
-
-    :param shos_cmdline: the command line arguments. You can get them using `sys.argv`.
-    """
-    def __init__(self, shos_cmdline):
-        super(KeBootloader, self).__init__()
-
-    def shos_start(self):
-        pass
+setup(
+    name='shOS Kernel Library',
+    version='0.1-alpha',
+    packages=['shos', 'shos.ke'],
+    url='https://github.com/Ryanhtech/shos',
+    license='Apache License 2.0',
+    author='Ryanhtech Labs',
+    author_email='',
+    description='Ryanhtech shOS (Sense Hat OS): The best OS for your Raspberry Pi Sense HAT'
+)
